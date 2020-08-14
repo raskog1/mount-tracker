@@ -6,7 +6,8 @@ class Mount extends React.Component {
   state = {
     result: [
       {
-        Name: "Otter",
+        Name: "",
+        Icon: "",
       },
     ],
     search: "",
@@ -29,7 +30,10 @@ class Mount extends React.Component {
     return (
       <container>
         <h1>FIX ME</h1>
-        <MountDetail name={this.state.result[0].Name} />
+        <MountDetail
+          name={this.state.result[0].Name}
+          icon={this.state.result[0].Icon}
+        />
       </container>
     );
   }
