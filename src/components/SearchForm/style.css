@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.form-group {
+  width: 550px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+}
+
+field-button {
+  margin-bottom: 20px;
+}
+
+button {
+  float: right;
+}

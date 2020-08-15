@@ -1,17 +1,16 @@
 import React from "react";
 import XIVAPI from "./utils/XIVAPI";
-import MountContainer from "./components/MountContainer"
-import SearchForm from "./components/SearchForm"
+import MountContainer from "./components/MountContainer";
+import SearchForm from "./components/SearchForm";
 import "./App.css";
 
 class App extends React.Component {
-
   state = {
     result: [
       {
-        Name: "",
+        Name: "tiger",
         Icon: "",
-        ID: ""
+        ID: "",
       },
     ],
     search: "",
@@ -23,20 +22,21 @@ class App extends React.Component {
 
   searchMount(query) {
     XIVAPI.search(query)
-      .then((res) => this.setState({ result: res.Results }))
+      .then((mountList) => this.setState({ result: mountList.Results }))
       // Log just to verify contents
       .catch((err) => console.log(err));
   }
 
-  handleInputChange = event => {
-    const value = event.target.value;
-    const name = event.target.name;
+  // This is firing every time I type a letter in the search box
+  handleInputChange = (event) => {
+    const value = event.target.value; // this.state.search?
+    const name = event.target.name; // "search"
     this.setState({
-      [name]: value
+      [name]: value, //setting state.search to the field input
     });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     this.searchMount(this.state.search);
   };
@@ -48,7 +48,8 @@ class App extends React.Component {
         <SearchForm
           value={this.state.search}
           handleInputChange={this.handleInputChange}
-          handleFormSubmit={this.handleFormSubmit} />
+          handleFormSubmit={this.handleFormSubmit}
+        />
         <MountContainer results={this.state.result} />
       </>
     );
