@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 
 function Mount(props) {
-  // Capitalize first letter of each word
+  // Function to capitalize first letter of each word
   function capitalize(str) {
     let capStr = str.split(" ");
     let finalStr = [];

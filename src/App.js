@@ -1,6 +1,7 @@
 import React from "react";
 import XIVAPI from "./utils/XIVAPI";
 import MountContainer from "./components/MountContainer";
+import SortBar from "./components/SortBar";
 import SearchForm from "./components/SearchForm";
 import "./App.css";
 
@@ -23,13 +24,12 @@ class App extends React.Component {
   searchMount(query) {
     XIVAPI.search(query)
       .then((mountList) => this.setState({ result: mountList.Results }))
-      // Log just to verify contents
       .catch((err) => console.log(err));
   }
 
-  // This is firing every time I type a letter in the search box
   handleInputChange = (event) => {
     this.setState({ search: event.target.value });
+
     // const value = event.target.value; // this.state.search?
     // const name = event.target.name; // "search"
     // this.setState({
@@ -43,9 +43,23 @@ class App extends React.Component {
   };
 
   alphaClick = (e) => {
-    console.log("Sorting by alpha...");
     const mountList = this.state.result;
     this.setState({ result: mountList.sort(this.sortResults("Name")) });
+  }
+
+  revAlphaClick = (e) => {
+    const mountList = this.state.result;
+    this.setState({ result: mountList.sort(this.sortResults("Name", "desc")) });
+  }
+
+  idClick = (e) => {
+    const mountList = this.state.result;
+    this.setState({ result: mountList.sort(this.sortResults("ID")) });
+  }
+
+  revIdClick = (e) => {
+    const mountList = this.state.result;
+    this.setState({ result: mountList.sort(this.sortResults("ID", "desc")) });
   }
 
   sortResults(key, order = "asc") {
@@ -72,12 +86,18 @@ class App extends React.Component {
     return (
       <>
         <h1>FFXIV Mounts</h1>
-        <button onClick={this.alphaClick}>Sort</button>
         <SearchForm
           value={this.state.search}
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
+        <SortBar
+          alphaClick={this.alphaClick}
+          idClick={this.idClick}
+          revAlphaClick={this.revAlphaClick}
+          revIdClick={this.revIdClick}
+        />
+        <hr style={{ width: "600px", margin: "auto", marginBottom: "10px" }} />
         <MountContainer results={this.state.result} />
       </>
     );

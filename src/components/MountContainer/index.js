@@ -4,8 +4,8 @@ import Mount from "../Mount";
 
 function MountContainer(props) {
 
-  if (props.results.length > 10) {
-    props.results.length = 10;
+  if (props.results.length > 20) {
+    props.results.length = 20;
   }
 
   return (

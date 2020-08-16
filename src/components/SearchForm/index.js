@@ -2,11 +2,11 @@ import React from "react";
 import "./style.css";
 
 function SearchForm(props) {
+
     return (
         <form>
-            <div className="form-group">
+            <div id="form-group">
                 <label htmlFor="search">Search for a Mount:</label>
-                {/* <row className="field-button"> */}
                 <input
                     onChange={props.handleInputChange}
                     value={props.value}
@@ -19,11 +19,9 @@ function SearchForm(props) {
 
                 <button
                     onClick={props.handleFormSubmit}
-                    className="btn-primary col-2"
-                >
+                    className="btn-primary col-2">
                     Search
-          </button>
-                {/* </row> */}
+                </button>
             </div>
         </form>
     );
