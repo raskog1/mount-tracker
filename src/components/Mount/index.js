@@ -12,8 +12,6 @@ function Mount(props) {
     return finalStr.join(" ");
   }
 
-  console.log("Mount is firing..." + props.mount.Name);
-
   return (
     <a
       href={`https://ffxivcollect.com/mounts/${props.mount.ID}`}

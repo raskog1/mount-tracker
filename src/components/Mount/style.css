@@ -11,13 +11,17 @@ img {
 }
 
 h4 {
-  line-height: 100px;
-  margin-left: 40px;
-  margin-right: 40px;
+  vertical-align: middle;
+  line-height: 90px;
+  width: 120px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
 h5 {
   vertical-align: middle;
+  line-height: 90px;
   margin-left: 80px;
 }
 
