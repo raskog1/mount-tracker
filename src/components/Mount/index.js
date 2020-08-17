@@ -13,12 +13,12 @@ function Mount(props) {
   }
 
   return (
-    <a
-      href={`https://ffxivcollect.com/mounts/${props.mount.ID}`}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div className="mount">
+    <div className="mount">
+      <a
+        href={`https://ffxivcollect.com/mounts/${props.mount.ID}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <h4>{props.mount.ID}</h4>
         <img
           className="align-top"
@@ -26,8 +26,8 @@ function Mount(props) {
           alt={props.mount.Name}
         />
         <h5>{capitalize(props.mount.Name)}</h5>
-      </div>
-    </a>
+      </a>
+    </div>
   );
 }
 
